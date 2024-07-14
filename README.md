@@ -27,5 +27,5 @@ This project demonstrates the ability to build and maintain real-time data pipel
 
 1. **Clone the Repository:**
    ```sh
-   git clone <repository_url>
+   git clone https://github.com/tsuhaofu/Data-Engineering-Fetch-Rewards.git
    cd fetch_rewards_etl
