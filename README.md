@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS user_logins(
 );
 ```
 
-3. **Alter the Postgres Table (if necessary):**
+**Alter the Postgres Table (if necessary):**
 
 If the app_version column is not already of type varchar, alter the table schema:
 
