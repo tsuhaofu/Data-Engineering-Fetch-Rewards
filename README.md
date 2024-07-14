@@ -39,12 +39,6 @@ This project demonstrates the ability to build and maintain real-time data pipel
 - **AWS CLI Local**: `pip install awscli-local`
 - **PostgreSQL Client**: [Installation Guide](https://www.postgresql.org/download/)
 
-3. **Install Python Dependencies:**
-
-```sh
-pip install -r requirements.txt
-```
-
 ### Project Setup
 
 1. **Start Docker Containers:**
@@ -52,8 +46,13 @@ pip install -r requirements.txt
 ```sh
 docker-compose up -d
 ```
+2. **Create the SQS Queue:**
 
-2. **Build and Run ETL Application:**
+```sh
+awslocal sqs create-queue --queue-name login-queue
+```
+
+3. **Build and Run ETL Application:**
 
 ```sh
 docker build -t fetch_etl .
