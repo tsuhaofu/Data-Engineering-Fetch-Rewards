@@ -65,7 +65,7 @@ docker run --network="host" fetch_etl
 1.**Read a Message from the Queue:**
 
 ```sh
-as local sqs receive-message --queue-url http://localhost:4566/000000000000/login-queue
+awslocal sqs receive-message--queue-url http://localhost:4566/000000000000/login-queue
 ```
 
 2. **Connect to the Postgres Database:**
