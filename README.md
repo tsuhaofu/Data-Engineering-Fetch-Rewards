@@ -59,7 +59,7 @@ docker build -t fetch_etl
 docker run --network="host" fetch_etl
 ```
 
-###Verifying the Setup
+### Verifying the Setup
 
 1.**Read a Message from the Queue:**
 
@@ -78,7 +78,7 @@ psql -d postgres -U postgres -p 5432 -h localhost -W
 SELECT * FROM user_logins;
 ```
 
-##Database Schema
+## Database Schema
 The target table `user_logins` is created with the following DDL:
 
 ```sql
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS user_logins(
     create_date         date
 );
 ```
-##Thought Process
+## Thought Process
 
 1. **Reading Messages**: Utilized boto3 to read messages from a local SQS queue.
 2. **Masking PII**: Applied SHA256 hashing to mask device_id and ip fields, ensuring that duplicates can be identified while maintaining data security.
@@ -104,12 +104,12 @@ Copy code
 boto3==1.18.69
 psycopg2-binary==2.9.1
 
-##Questions and Answers
+## Questions and Answers
 
-###How would you deploy this application in production?
+### How would you deploy this application in production?
 I would deploy this application using a managed Kubernetes service like AWS EKS or GCP GKE. Kubernetes provides scalability, reliability, and automated management of containerized applications. The components would be deployed as microservices, allowing independent scaling and maintenance.
 
-###What other components would you want to add to make this production ready?
+### What other components would you want to add to make this production ready?
 To make this application production-ready, I would add:
 
 - **Monitoring and Logging**: Implement tools like Prometheus for monitoring and the ELK stack (Elasticsearch, Logstash, Kibana) for centralized logging.
@@ -117,22 +117,22 @@ To make this application production-ready, I would add:
 - **Secrets Management**: Use AWS Secrets Manager or HashiCorp Vault to securely manage sensitive information.
 - **Error Handling and Alerts**: Incorporate comprehensive error handling and set up alerting mechanisms to notify of any issues in real-time.
   
-###How can this application scale with a growing dataset?
+### How can this application scale with a growing dataset?
 This application can scale with a growing dataset by:
 
 - **Horizontal Scaling**: Adding more instances of the ETL service to handle increased load.
 - **Distributed Messaging**: Using a distributed messaging system like Apache Kafka instead of SQS for better scalability and fault tolerance.
 - **Database Sharding**: Implementing sharding in the Postgres database to distribute the load across multiple database instances.
-- 
-###How can PII be recovered later on?
+
+### How can PII be recovered later on?
 PII can be recovered later on by storing the mapping of original values to their hashed values in a secure, separate database. This allows for the recovery of original PII if necessary while maintaining data security.
 
-###What are the assumptions you made?
+### What are the assumptions you made?
 - The structure of the JSON messages remains consistent.
 - The SQS queue and Postgres database are properly configured and accessible.
 - The device_id and ip fields are to be masked using SHA256 hashing to ensure duplicates can be identified.
   
-###Scope of Responsibilities
+### Scope of Responsibilities
 This project aligns with the role of a Data Engineer at Fetch Rewards by demonstrating the ability to:
 
 - Develop event-based real-time data pipelines that filter, join, sort, and manipulate data into useful aggregations.
