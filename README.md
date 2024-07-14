@@ -55,7 +55,7 @@ docker-compose up -d
 2. **Build and Run ETL Application:**
 
 ```sh
-docker build -t fetch_etl
+docker build -t fetch_etl .
 docker run --network="host" fetch_etl
 ```
 
