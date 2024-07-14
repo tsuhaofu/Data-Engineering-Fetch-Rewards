@@ -33,10 +33,10 @@ This project demonstrates the ability to build and maintain real-time data pipel
 
 2. **Install Required Tools:**
 
-- **Docker**: Installation Guide
+- **Docker**: [Installation Guide](https://docs.docker.com/get-docker/)
 - **Docker Compose**: Included with Docker Desktop
-- **AWS CLI Local**: pip install awscli-local
-- **PostgreSQL Client**: Installation Guide
+- **AWS CLI Local**: `pip install awscli-local`
+- **PostgreSQL Client**: [Installation Guide](https://www.postgresql.org/download/)
 
 3. **Install Python Dependencies:**
 
@@ -63,9 +63,9 @@ docker run --network="host" fetch_etl
 
 1.**Read a Message from the Queue:**
 
-``sh
-awslocal sqs receive-message --queue-url http://localhost:4566/000000000000/login-queue
-``
+```sh
+as local sqs receive-message --queue-url http://localhost:4566/000000000000/login-queue
+```
 
 2. **Connect to the Postgres Database:**
 
