@@ -120,23 +120,23 @@ To make this application production-ready, I would add:
 ###How can this application scale with a growing dataset?
 This application can scale with a growing dataset by:
 
-- **Horizontal Scaling: Adding more instances of the ETL service to handle increased load.
-- **Distributed Messaging: Using a distributed messaging system like Apache Kafka instead of SQS for better scalability and fault tolerance.
-- **Database Sharding: Implementing sharding in the Postgres database to distribute the load across multiple database instances.
+- **Horizontal Scaling**: Adding more instances of the ETL service to handle increased load.
+- **Distributed Messaging**: Using a distributed messaging system like Apache Kafka instead of SQS for better scalability and fault tolerance.
+- **Database Sharding**: Implementing sharding in the Postgres database to distribute the load across multiple database instances.
 - 
 ###How can PII be recovered later on?
 PII can be recovered later on by storing the mapping of original values to their hashed values in a secure, separate database. This allows for the recovery of original PII if necessary while maintaining data security.
 
 ###What are the assumptions you made?
-- **The structure of the JSON messages remains consistent.
-- **The SQS queue and Postgres database are properly configured and accessible.
-- **The device_id and ip fields are to be masked using SHA256 hashing to ensure duplicates can be identified.
+- The structure of the JSON messages remains consistent.
+- The SQS queue and Postgres database are properly configured and accessible.
+- The device_id and ip fields are to be masked using SHA256 hashing to ensure duplicates can be identified.
   
 ###Scope of Responsibilities
 This project aligns with the role of a Data Engineer at Fetch Rewards by demonstrating the ability to:
 
-- **Develop event-based real-time data pipelines that filter, join, sort, and manipulate data into useful aggregations.
-- **Write efficient and scalable code in Python.
-- **Understand and handle the complexities of distributed systems, ensuring resilience to failures.
-- **Identify and fix performance bottlenecks in high throughput pipelines.
-- **Communicate effectively, translating and explaining technical issues to non-technical team members.
+- Develop event-based real-time data pipelines that filter, join, sort, and manipulate data into useful aggregations.
+- Write efficient and scalable code in Python.
+- Understand and handle the complexities of distributed systems, ensuring resilience to failures.
+- Identify and fix performance bottlenecks in high throughput pipelines.
+- Communicate effectively, translating and explaining technical issues to non-technical team members.
