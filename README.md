@@ -59,6 +59,7 @@ docker build -t fetch_etl .
 docker run --network="host" fetch_etl
 ```
 
+
 ### Verifying the Setup
 
 1.**Read a Message from the Queue:**
@@ -92,6 +93,15 @@ CREATE TABLE IF NOT EXISTS user_logins(
     create_date         date
 );
 ```
+
+3. **Alter the Postgres Table (if necessary):**
+
+If the app_version column is not already of type varchar, alter the table schema:
+
+```sql
+ALTER TABLE user_logins ALTER COLUMN app_version TYPE varchar(32) USING app_version::varchar;
+```
+
 ## Sample Ouput
 Here is a sample output of the `SELECT * FROM user_logins;` query after running the ETL process:
 
