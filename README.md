@@ -98,12 +98,6 @@ CREATE TABLE IF NOT EXISTS user_logins(
 2. **Masking PII**: Applied SHA256 hashing to mask device_id and ip fields, ensuring that duplicates can be identified while maintaining data security.
 3. **Writing to Postgres**: Connected to a local Postgres database using psycopg2 and inserted the transformed data.
 
-requirements.txt
-makefile
-Copy code
-boto3==1.18.69
-psycopg2-binary==2.9.1
-
 ## Questions and Answers
 
 ### How would you deploy this application in production?
