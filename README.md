@@ -62,7 +62,7 @@ docker run --network="host" fetch_etl
 
 ### Verifying the Setup
 
-1.**Read a Message from the Queue:**
+1. **Read a Message from the Queue:**
 
 ```sh
 awslocal sqs receive-message--queue-url http://localhost:4566/000000000000/login-queue
