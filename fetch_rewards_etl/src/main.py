@@ -4,6 +4,7 @@ import boto3
 import psycopg2
 from datetime import datetime
 import json
+import re
 
 # Set dummy AWS credentials for localstack
 #os.environ['AWS_ACCESS_KEY_ID'] = 'dummy'
@@ -13,11 +14,18 @@ import json
 def mask_pii(value):
     return hashlib.sha256(value.encode()).hexdigest()
 
+def extract_major_version(version):
+    match = re.match(r'(\d+)', version)
+    if match:
+        return int(match.group(1))
+    return None
+
 def receive_messages():
     sqs = boto3.client('sqs', endpoint_url='http://localhost:4566', region_name='us-east-1')
     response = sqs.receive_message(
         QueueUrl='http://localhost:4566/000000000000/login-queue',
         MaxNumberOfMessages=10,
+        WaitTimeSeconds=20
     )
     return response.get('Messages', [])
 
@@ -29,7 +37,7 @@ def process_message(message):
         'masked_ip': mask_pii(body['ip']),
         'masked_device_id': mask_pii(body['device_id']),
         'locale': body['locale'],
-        'app_version': str(body['app_version']),  # Ensure app_version is a string
+        'app_version': extract_major_version(body['app_version']),  # Extract major version as integer
         'create_date': datetime.now()
     }
     return transformed_data
